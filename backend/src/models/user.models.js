@@ -16,6 +16,10 @@ const User = sequelize.define("User", {
     allowNull: false,
     unique: true,
   },
+  numero:{
+    type:DataTypes.STRING,
+    allowNull:false,
+   },
   mot_de_passe: {
     type: DataTypes.STRING,
     allowNull: false,
