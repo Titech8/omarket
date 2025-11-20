@@ -24,7 +24,7 @@ const ProductForm = () =>{
         const formData = new FormData();
         for (let key in form) formData.append(key, form[key]);
 
-        await API.post("/poducts", formData,{
+        await API.post("/products", formData,{
             headers: {"Content-Type": "multipart/form-data"},
         });
 

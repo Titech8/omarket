@@ -6,6 +6,7 @@ import User from "./models/user.models.js";
 import authRoutes from "./routes/auth.routes.js";
 import productRoutes from "./routes/Product.route.js";
 import path from "path";
+import createAdmin from "./utils/createAdmin.js";
 
 dotenv.config();
 const app = express();
@@ -31,10 +32,13 @@ app.use((err, req, res, next) => {
 //synchonisation d la base de données
 
 sequelize
-    .sync({alter: true})
+    .sync({force: false, alter: false})
     .then(() => console.log("Database & tables created!"))
     .catch((err) => console.log("Error: " + err));
 
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT,"127.0.0.1", () => console.log(`Server running on http://127.0.0.1:${PORT}`));
+
+//Créer un admin par défaut
+await createAdmin();
